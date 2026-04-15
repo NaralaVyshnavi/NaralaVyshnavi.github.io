@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<style>
+    body{
+        background-color: aliceblue;
+        text-align: center;
+    }
+    div{
+        width: 500px;
+        height: 300px;
+        border: none;
+        background-color:transparent;
+    }
+    #todolist li{
+        display: flex;
+    }
+</style>
+<body>
+    <div>
+        <h3>Add Your Todos</h3>
+        <input type="text" name="" id="todo-txt">
+        <button id="addbtn">+</button>
+        <ul id="todolist">
+        </ul>
+    </div>
+    <script>
+        var todos=[];
+       if(window.localStorage.getItem("todos")){
+        todos=JSON.parse(window.localStorage.getItem("todos"));
+        genTodoList();
+
+       }
+        document.getElementById("addbtn").addEventListener("click",function(){
+            var todo=document.getElementById("todo-txt").value;
+            todos.push(todo);
+            window.localStorage.setItem("todos",JSON.stringify(todos));
+            genTodoList();
+            document.getElementById("todo-txt").value='';
+        })
+        function genTodoList(){
+            document.getElementById("todolist").innerHTML='';
+            todos.forEach((todo,id)=>{
+                var li=document.createElement("li");
+                li.innerText=todo;
+               var removeButton=document.createElement("button");
+               removeButton.innerText="remove";
+               removeButton.addEventListener("click",function(){
+                todos.splice(id,1);
+                window.localStorage.setItem("todos",todos);
+
+                genTodoList();
+                
+               })   
+               document.getElementById("todolist").appendChild(li);
+               document.getElementById("todolist").appendChild(removeButton);
+            });
+        }
+    </script>
+</body>
+</html>

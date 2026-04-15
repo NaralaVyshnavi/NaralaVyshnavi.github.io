@@ -1,0 +1,21 @@
+[
+    {
+        "username":"vyshu",
+        "password":"123",
+        "todos":[
+            "sleep","eat","drink"
+        ]
+    },
+    {
+        "username":"vibha",
+        "password":"1234",
+        "todos":[
+            "sleep","eat","drink"
+        ]
+    },
+    {
+        "username":"vyntra",
+        "password":"12345",
+        "todos":["go to goa","study"]
+    }
+]

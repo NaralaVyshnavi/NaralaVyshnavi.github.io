@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 300px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+/* Card container layout (optional grid) */
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Individual card */
+.card {
+    background: white;
+    width: 250px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Card title */
+.card h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+/* Card text */
+.card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Button inside card */
+.card button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+<body>
+    <form  id="form">
+        <input type="text" name="name" placeholder="Enter Name">
+        <input type="text" name="mobilenumber" placeholder="Enter mobile number">
+        <input type="text" name="course" placeholder="Enter course">
+        <button type="submit">Submit</button>
+    </form>
+    <div class="query-container">
+        <h1>
+            Your queries
+        </h1>
+        <div id="card-container">
+
+        </div>
+    </div>
+    <script>
+
+        document.getElementById("form").addEventListener("submit",addEnquiry);
+        function addEnquiry(ev){
+            ev.preventDefault();
+            const form =document.getElementById("form")
+            const formData={
+                name:form.name.value,
+                mobilenumber:form.mobilenumber.value,
+                course:form.course.value
+            }
+            fetch("http://localhost:3500/addEnquiry",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(formData)
+            })
+            .then(res=>res.text())
+            .then(()=>{
+                form.reset()
+                genUI();
+            })
+        }
+        function genUI(){
+
+            fetch('http://localhost:3500/getEnquiries')
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+                document.getElementById("card-container").innerHTML="";
+                data.forEach(e=>{
+                    var card=document.createElement("div");
+                     card.innerHTML=`
+                    <div class="card">
+                        <h1>Name:${e.name}</h1>
+                        <h3>Mobile No.:${e.mobilenumber}</h3>
+                        <h3>Course:${e.course}</h3>
+                    </div>
+                    `
+                    document.getElementById("card-container").appendChild(card);
+                })
+            })
+        }
+        genUI()
+    </script>
+</body>
+</html>

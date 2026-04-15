@@ -1,0 +1,109 @@
+body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 60px 0;
+}
+
+/* Main Table Card */
+.todoTable{
+    border-collapse: collapse;
+    width: 750px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.todoTable th{
+    background: linear-gradient(to right, #ff6a88, #ff99ac);
+    color: white;
+    padding: 18px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Table Cells */
+.todoTable td{
+    padding: 14px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 15px;
+}
+
+.todoTable tr:last-child td{
+    border-bottom: none;
+}
+
+.todoTable tr:hover{
+    background-color: #f9f9ff;
+    transition: 0.2s;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="search"]{
+    padding: 10px;
+    margin-right: 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    width: 180px;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus{
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.3);
+}
+
+/* Buttons */
+button{
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 6px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* Add */
+#addTodobtn{
+    background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+#addTodobtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(102,126,234,0.4);
+}
+
+/* Edit */
+#editbtn{
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+}
+
+#editbtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(91,134,229,0.4);
+}
+
+/* Remove */
+#removebtn{
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+}
+
+#removebtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(255,75,43,0.4);
+}
+
+/* Checkbox */
+input[type="checkbox"]{
+    transform: scale(1.2);
+    accent-color: #ff6a88;
+}

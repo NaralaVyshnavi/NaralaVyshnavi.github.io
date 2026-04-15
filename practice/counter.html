@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="counterValue">Counter:</h1>
+    <button id="plusbtn">+</button>
+    <button id="minusbtn">-</button>
+    <script>
+        if(window.localStorage.getItem("count")==null){
+            window.localStorage.setItem("count",0);
+            genUI();
+
+        }
+        function genUI(){
+
+            document.getElementById("counterValue").innerText="Counter:"+window.localStorage.getItem("count");
+           
+           
+        }
+        genUI();
+         document.getElementById("plusbtn").addEventListener("click",function(){
+                 var count=window.localStorage.getItem("count");
+                 count++;
+                window.localStorage.setItem("count",count);
+                genUI();
+            })
+             document.getElementById("minusbtn").addEventListener("click",function(){
+                var count=window.localStorage.getItem("count");
+                count--;
+                window.localStorage.setItem("count",count);
+                genUI();
+            })
+    </script>
+</body>
+</html>

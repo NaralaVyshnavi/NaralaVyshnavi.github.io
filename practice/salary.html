@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var salary=Number(prompt("Enter salary"))
+        var performance=prompt("enter the performence")
+        const alphabetArray = [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+        'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+        ];
+        if(salary<10000){
+            salary=salary+(salary*20)/100;
+        }
+        else if(salary>=10000 && salary<=20000){
+            salary=salary+(salary*10)/100
+        }
+        else if(salary==20000){
+            salary=salary+(salary*5)/100
+        }
+        else{
+            console.log("bonus will  not be added")
+        }
+        console.log(salary)
+          
+        if(performance.split(',').includes(alphabetArray)){
+            if(performance.toLowerCase()=='excellent'){
+            salary=parseInt(salary+(salary*5)/100)
+            }
+            else{
+                console.log("perfomence is not excellent")
+            }
+        }
+        else{
+            console.log("please enter letters only")
+        }
+    </script>
+</body>
+</html>

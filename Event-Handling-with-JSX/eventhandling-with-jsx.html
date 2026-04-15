@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root">
+    </div>
+    <h1 id="h1"></h1>
+    <script type="text/babel">
+
+
+
+
+        var todos=["Eat","Wake","Sleep"];
+        var todo='';
+        function genUI(){
+            var jsx=<div>
+                        <input type="text" placeholder="Enter Todo" onKeyUp={(ev)=>{todo=ev.target.value}} required/>
+                        <button onClick={(ev)=>{addTodo(ev)}}>Add Todo</button>
+                        <ul>
+                            {
+                                todos.map(todo=>{
+                                    return <li>{todo}</li>
+                                })
+                            }
+                                
+                        </ul>
+                    </div>
+            ReactDOM.render(jsx,document.getElementById("root"));
+        }
+        genUI();
+
+                function addTodo(ev){
+                    todos.push(todo);
+                    console.log(todo);
+                    genUI();
+                }
+
+
+
+
+
+
+
+
+
+
+
+        // var text='';
+        // function show(ev){
+        //     text=ev.target.value;
+        //     document.getElementById("h1").innerText=text;
+        // }
+        // var jsx=<input type="text" onKeyUp={(ev)=>{show(ev)}}/>
+        // ReactDOM.render(jsx,document.getElementById("root"));
+        
+        // document.getElementById("text").addEventListener("input",function(){
+        //     var value=document.getElementById("text").value;
+        //     document.getElementById("h1").innerText=value;
+        // })
+        
+       
+        
+
+        
+        
+        
+        
+        
+        // function addTodo(){
+        //     var value=document.getElementById("input").value;
+        //     todo=value;
+        //     console.log(todo);
+        // }
+        
+        // function show(){
+        //     alert("Hello World");
+        // }
+        // var jsx=<button onClick={()=>{show()}}>Click Here</button>
+        // ReactDOM.render(jsx,document.getElementById("root"));
+        
+        
+        
+
+        </script>        
+</body>
+</html>

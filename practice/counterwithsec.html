@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="countId"></h1>
+    <button  id="incbtn" onclick="inc()">Increment</button>
+    <button id="decbtn" onclick="dec()">Decrement</button>
+    <script>
+    var count=0;
+    var isClicked=false
+   function genUI(){
+    document.getElementById("countId").innerText="Count:"+count
+   }
+   const incbtn=document.getElementById("incbtn");
+   const decbtn=document.getElementById("decbtn");
+   genUI();
+        function inc(){
+            isClicked=true
+            count++
+            genUI();
+        }
+        function dec(){
+            count--
+            genUI()
+        }
+        function timer(){
+            const timer=setInterval(()=>{
+           if(!isClicked){
+                count++;
+                genUI()
+           }
+           else{
+            clearInterval(timer)
+            isClicked=false
+           }
+        },2000)
+        }
+        timer();
+         
+
+    </script>
+</body>
+</html>

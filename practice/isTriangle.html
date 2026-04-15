@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let isTriangle=false;
+        var a=+prompt("enter a value")
+        var b=+prompt("enter b value");
+        var c=+prompt("Enter c value")
+        if(a+b>c|| b+c>a || c+a>b){
+            console.log("the triangle is valid")
+             if(a==b && b==c && c==a){
+                console.log("the given triangle is equilateral")
+            }
+            else if(a==b || b==c  || c==a){
+                console.log("the given triangle is isosceles")
+            }
+            else if(a!=b && a!=c && c!=a ){
+                console.log("the given triangel is scalane")
+            }
+        }
+        
+    </script>
+</body>
+</html>

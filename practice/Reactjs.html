@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .abc{
+            color:pink
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        var products=["Ravi","Arjun","Nani"];
+        var productList=<table border="1" cellPadding="5" style={{color:"skyblue",backgroundColor:"pink",borderCollapse:"collapse"
+        }}>
+            <tbody>   
+                {
+                    products.map(p=>{
+                        return (
+                        <tr>
+                            <td>{p}</td>
+                        </tr>
+    
+                        )
+                    })
+                }
+            </tbody>
+            </table>
+
+        ReactDOM.render(productList,document.getElementById("root"));
+       
+        // var vysh=React.createElement('h1',{style:{color:"yellow",backgroundColor:"pink"}},"Hello World");
+        // console.log(vysh);
+        // ReactDOM.render(vysh,document.getElementById("root"));
+
+        // // console.log(ReactDOM)
+        // // var a=100;
+        // // var b=2;
+        // // var sum=<h1>{a+b}</h1>
+        // // ReactDOM.render(sum,document.getElementById("root"));
+    </script>
+</body>
+</html>

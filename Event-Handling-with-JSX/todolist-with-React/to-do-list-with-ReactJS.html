@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        var todos=[];
+        var editId=null;
+        if(JSON.parse(localStorage.getItem("todos"))){
+            todos=JSON.parse(localStorage.getItem("todos"));
+        }
+        var todo='';
+        function genTable(data=todos){
+
+            var jsx=<table border="1" className="todoTable">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Todo</th>
+                        <th>
+                            <input type="search" id="searchTxt" placeholder="Search here....." onKeyUp={()=>{searchTodos()}}/>
+                            <input type="text"  id="inputBox"onKeyUp={(ev)=>{todo=ev.target.value}} placeholder="Enter New Todo"/>
+                            <button id="addTodobtn" onClick={(ev)=>{editId!=null?updateTodo():addTodo(ev)}}>{editId!=null?"Update Todo":"Add New Todo"}</button></th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        {
+                            data.map((item,id)=>{
+                                var originalId=typeof item.originalIndex==="number"?item.originalIndex:id;
+                                var todo=typeof item.text==="string"?todos[originalId]:item;
+                                return (
+                                    <tr>
+                                        <td><input type="checkbox" checked={todo.completed} onChange={()=>{toggleStatus(originalId)}}/></td>
+                                        <td style={{textDecoration:todo.completed?"line-through":"none"}}>{todo.text}</td>
+                                        <td> <button id="removebtn" onClick={()=>{removeTodo(originalId)}}>Remove</button> <button onClick={()=>{editTodo(originalId)}} id="editbtn">Edit</button></td>
+
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+
+            ReactDOM.render(jsx,document.getElementById("root"));
+        }
+        genTable();
+
+        function addTodo(){
+            var value=document.getElementById("inputBox").value
+            if(value){
+            
+
+                    todos.push({
+                        text:value,
+                        completed:false
+                    });
+
+                    console.log(todos);
+                    localStorage.setItem("todos",JSON.stringify(todos));
+                    document.getElementById("inputBox").value='';
+                    genTable();
+            }
+            else{
+                alert("Please Enter todo");
+                return;
+            }
+        }
+
+        function removeTodo(id){
+            if(confirm("Are you sure?")){
+                todos.splice(id,1);
+                console.log(todos);
+                localStorage.setItem("todos",JSON.stringify(todos));
+                genTable();
+            }
+        }
+
+        function editTodo(id){
+            todo=todos[id].text;
+            document.getElementById("inputBox").value=todo;
+            editId=id;
+            genTable();
+            
+        }
+
+
+
+        function updateTodo(){
+                var value=document.getElementById("inputBox").value;
+                if(!value){
+                    alert("please Enter Todo");
+                    return;
+                }
+                todos[editId].text=value;
+                localStorage.setItem("todos",JSON.stringify(todos));
+                editId=null;
+                document.getElementById("inputBox").value='';
+                genTable();
+        }
+
+
+
+        function searchTodos(){
+            var searchTxt=document.getElementById("searchTxt").value;
+            if(searchTxt===""){
+                genTable();
+                return;
+            }
+            var filteredTodos=todos.map((todo,id)=>({
+
+                        ...todo,
+                        originalIndex:id
+                    }
+                 )).filter(item=>
+                      item.text.toLowerCase().includes(searchTxt.toLowerCase())
+                 )
+
+                
+            
+            genTable(filteredTodos);
+        }
+
+        function toggleStatus(id){
+            todos[id].completed=!todos[id].completed;
+            localStorage.setItem("todos",JSON.stringify(todos));
+            genTable();
+        }
+    </script>
+</body>
+</html>
