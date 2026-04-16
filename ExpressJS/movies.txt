@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Inception",
+    "year": 2010,
+    "genre": "Sci-Fi",
+    "director": "Christopher Nolan",
+    "rating": 8.8,
+    "image": "https://example.com/images/inception.jpg"
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "genre": "Drama",
+    "director": "Frank Darabont",
+    "rating": 9.3,
+    "image": "https://example.com/images/shawshank-redemption.jpg"
+  },
+  {
+    "title": "The Godfather",
+    "year": 1972,
+    "genre": "Crime",
+    "director": "Francis Ford Coppola",
+    "rating": 9.2,
+    "image": "https://example.com/images/the-godfather.jpg"
+  },
+  {
+    "title": "The Dark Knight",
+    "year": 2008,
+    "genre": "Action",
+    "director": "Christopher Nolan",
+    "rating": 9.0,
+    "image": "https://example.com/images/the-dark-knight.jpg"
+  },
+  {
+    "title": "Parasite",
+    "year": 2019,
+    "genre": "Thriller",
+    "director": "Bong Joon-ho",
+    "rating": 8.6,
+    "image": "https://example.com/images/parasite.jpg"
+  }
+]
