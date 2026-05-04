@@ -1,21 +1,39 @@
 [
     {
         "username":"vyshu",
-        "password":"123",
-        "todos":[
-            "sleep","eat","drink"
-        ]
+        "password":123
     },
     {
-        "username":"vibha",
-        "password":"1234",
-        "todos":[
-            "sleep","eat","drink"
-        ]
+        "username":"vibha", 
+        "password":1234
     },
     {
         "username":"vyntra",
-        "password":"12345",
-        "todos":["go to goa","study"]
+        "password":12345
+    },
+
+    {
+        "username":"akshara",
+        "password":"123"
+    },
+    {
+        "username":"balu",
+        "password":"123"
+    },
+    {
+        "username":"rani",
+        "password":"123"
+    },
+    {
+        "username":"gauri",
+        "password":"123"
+    },
+    {
+        "username":"siri",
+        "password":"123"
+    },
+    {
+        "username":"tanu",
+        "password":"123"
     }
 ]
